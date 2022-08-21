@@ -219,7 +219,8 @@ class MirrorLeechListener:
             msg += f'╠═════════════════════════════╗\n╠➜<i>Total Files: </i>{folders}\n╠═════════════════════════════╝'
             if typ != 0:
                 msg += f'\n<b>Corrupted Files: </b>{typ}'
-            msg += f'\n<b>cc: </b>{self.tag}\n\n'
+            uname = f'<a href="tg://user?id={download.message.from_user.id}">{download.message.from_user.first_name}</a>'
+            msg += f'<i>cc: </i> {uname}\n╚═════════════════════════════╝"
             if not files:
                 sendMessage(msg, self.bot, self.message)
             else:
