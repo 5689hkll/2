@@ -214,19 +214,12 @@ class MirrorLeechListener:
     def onUploadComplete(self, link: str, size, files, folders, typ, name):
         if not self.isPrivate and INCOMPLETE_TASK_NOTIFIER and DB_URI is not None:
             DbManger().rm_complete_task(self.message.link)
-        msg = f"╔═════════════════════════════╗\n"    
-        msg = f"╠➜<b>Name: </b><code>{escape(name)}</code>\n" 
-        msg = f"╠═════════════════════════════╝\n"
-        msg = f"╠➜<b>Size: </b>{size}\n"
-        msg = f"╠═════════════════════════════╗\n"
+        msg = f"<b>Name: </b><code>{escape(name)}</code>\n\n<b>Size: </b>{size}"
         if self.isLeech:
-            msg += f'╠➜<b>Total Files: </b>{folders}\n'
-            msg = f"╠═════════════════════════════╝\n"
+            msg += f'\n<b>Total Files: </b>{folders}'
             if typ != 0:
-                msg += f'╠➜<b>Corrupted Files: </b>{typ}'
-                msg = f"╠═════════════════════════════╗\n"
-            msg += f'╠➜<b>Request By: </b>{self.tag}\n'
-            msg = f"╚═════════════════════════════╝"
+                msg += f'\n<b>Corrupted Files: </b>{typ}'
+            msg += f'\n<b>cc: </b>{self.tag}\n\n'
             if not files:
                 sendMessage(msg, self.bot, self.message)
             else:
