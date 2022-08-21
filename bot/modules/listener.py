@@ -219,7 +219,7 @@ class MirrorLeechListener:
             msg += f'╠═════════════════════════════╗\n╠➜<i>Total Files: </i>{folders}\n╠═════════════════════════════╝\n╠➜<b>Type: </b>{typ}\n'
             if typ != 0:
                 msg += f'\n<b>Corrupted Files: </b>{typ}'
-            msg += f"<i>╠➜Requested By: </i> {self.tag}\n╚═════════════════════════════╝"
+            msg += f"╠═════════════════════════════╗\n╠➜<i>Requested By: </i> {self.tag}\n╚═════════════════════════════╝"
             if not files:
                 sendMessage(msg, self.bot, self.message)
             else:
