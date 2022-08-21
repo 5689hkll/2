@@ -237,11 +237,11 @@ class MirrorLeechListener:
                     clean_target(self.newDir)
                 return
         else:
-            msg += f'╠═════════════════════════════╗\n<b>╠➜Type: </b>{typ}\n╠═════════════════════════════╝\n'
+            msg += f'╠═════════════════════════════╗\n<b>╠➜Type: </b>{typ}\n╠═════════════════════════════╝\n╠➜<b>Files: </b>{files}\n'
             if typ == "Folder":
-                msg += f'\n<b>SubFolders: </b>{folders}'
-                msg += f'\n<b>Files: </b>{files}'
-            msg += f'\n\n<b>cc: </b>{self.tag}'
+                msg += f''
+                msg += f''
+            msg += f"╠═════════════════════════════╗\n╠➜<i>Requested By: </i> {self.tag}\n╚═════════════════════════════╝"
             buttons = ButtonMaker()
             buttons.buildbutton("☁️ Drive Link", link)
             LOGGER.info(f'Done Uploading {name}')
