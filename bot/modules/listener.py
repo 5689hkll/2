@@ -242,6 +242,7 @@ class MirrorLeechListener:
                 msg += f''
                 msg += f''
             msg += f"╠═════════════════════════════╗\n╠➜<i>Requested By: </i> {self.tag}\n╚═════════════════════════════╝"
+            msg = f"<a href='{INDEX_URL}/{url_path}?a=view>view</a>"
             buttons = ButtonMaker()
             buttons.buildbutton("☁️ Drive Link", link)
             LOGGER.info(f'Done Uploading {name}')
