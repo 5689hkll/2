@@ -190,6 +190,8 @@ def get_readable_message():
             buttons.sbutton(f"{PAGE_NO}/{pages}", str(THREE))
             buttons.sbutton("Next", "status nex")
             buttons.sbutton("Statistics", str(FOUR))
+            buttons.sbutton("Refresh", str(ONE))	
+            buttons.sbutton("Close", str(TWO))	
             button = InlineKeyboardMarkup(buttons.build_menu(3))
             return msg + bmsg, button
         return msg + bmsg, sbutton
@@ -283,6 +285,26 @@ def get_content_type(link: str) -> str:
     return content_type
 
 ONE, TWO, THREE, FOUR = range(4)
+def refresh(update, context):
+    query = update.callback_query
+    query.edit_message_text(text="Refreshing Status...⏳")
+    sleep(5)
+    update_all_messages()
+
+def close(update, context):
+    chat_id = update.effective_chat.id
+    user_id = update.callback_query.from_user.id
+    bot = context.bot
+    query = update.callback_query
+    admins = bot.get_chat_member(chat_id, user_id).status in [
+        "creator",
+        "administrator",
+    ] or user_id in [OWNER_ID]
+    if admins:
+        delete_all_messages()
+    else:
+        query.answer(text="Only Admins can Close !", show_alert=True)
+
 def pop_up_stats(update, context):
     query = update.callback_query
     stats = bot_sys_stats()
