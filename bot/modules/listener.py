@@ -216,10 +216,10 @@ class MirrorLeechListener:
             DbManger().rm_complete_task(self.message.link)
         msg = f"╔═════════════════════════════╗\n╠➜<i>Name: </i> <code>{escape(name)}</code>\n╠═════════════════════════════╝\n<b>╠➜Size: </b>{size}\n"
         if self.isLeech:
-            msg += f'╠═════════════════════════════╗\n╠➜<i>Total Files: </i>{folders}\n╠═════════════════════════════╝'
+            msg += f'╠═════════════════════════════╗\n╠➜<i>Total Files: </i>{folders}\n╠═════════════════════════════╝\n╠➜<b>Type: </b>{typ}\n'
             if typ != 0:
                 msg += f'\n<b>Corrupted Files: </b>{typ}'
-            msg += f"<i>cc: </i> {self.tag}\n╚═════════════════════════════╝"
+            msg += f"<i>╠➜Requested By: </i> {self.tag}\n╚═════════════════════════════╝"
             if not files:
                 sendMessage(msg, self.bot, self.message)
             else:
